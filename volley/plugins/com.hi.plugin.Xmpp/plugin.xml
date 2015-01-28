@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.hi.plugin.Xmpp" version="1.0.0">
+
+    <name>XmppPlugin</name>
+
+  <description>
+    Xmpp Plugin for Openfire
+  </description>
+
+  <asset src="www/XmppPlugin.js" target="plugins/XmppPlugin.js" />
+
+  <engines>
+    <engine name="cordova" version=">=2.7.0" />
+  </engines>
+
+  <!-- android -->
+<platform name="android">
+    <config-file target="res/xml/config.xml" parent="plugins">
+	              <feature name="Xmpp" >
+                <param name="android-package" value="com.hi.plugin.Xmpp"/>
+            </feature>
+    </config-file>
+    <source-file src="src/android/com/hi/plugin/Xmpp.java" target-dir="src/com/hi/plugin" />
+  </platform>
+
+
+  <!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*/plugins">
+      <plugin name="Echo" value="Echo" onload="true" />
+    </config-file>
+
+    <config-file target="config.xml" parent="/widget">
+      <feature name="Echo">
+        <param name="ios-package" value="Echo"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/Echo.h" />
+
+    <source-file src="src/ios/Echo.m" />
+
+  </platform>
+</plugin>
