@@ -1,0 +1,242 @@
+body
+{
+	background-color:#08a8ee;
+}
+a
+{
+	text-decoration:none; 
+	color:white;
+}
+input
+{
+	border:none;
+	backround-color:none;
+}
+input
+{
+	border:transparent;
+	background-color:transparent;
+	padding-bottom: 5%;
+	text-decoration:none;
+	backround:none;
+	border-width:0; 
+    height:1em;
+    border-radius: .2em;
+    font-size:14px;
+    
+}
+#account
+{
+background-color:white;
+}
+h3
+{
+	color:white;
+	aling:left;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:-10.5em; 
+	margin-left:-7.7em;
+	background-size: cover;
+	color:white;
+}
+#photoprofile
+{
+	border-radius: 5em;
+	background-color: white;
+    display:block; 
+    width:5.5em; 
+    height:5.5em;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin-top:-13em; 
+    margin-left:-3.24em;
+	background-size: cover;
+}
+#txtuser
+{
+	border-radius: .2em;
+	background-color: white;
+    display:block; 
+    width:18.5em; 
+    height:2em;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin-top:-5.6em; 
+    margin-left:-9.25em;
+	background-size: cover;
+}
+
+#txtpass
+{
+	border-radius: .2em;
+	background-color: white;
+    display:block; 
+    width:18.5em; 
+    height:2em;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin-top:-2.1em; 
+    margin-left:-9.25em;
+	background-size: cover;
+}
+#txtgender
+{
+	border-radius: .2em;
+	background-color: white;
+    display:block; 
+    width:18.5em; 
+    height:2em;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin-top:4.6em; 
+    margin-left:-9.25em;
+	background-size: cover;
+}
+#lblemail
+{
+	aling:left;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:-8.3em; 
+	margin-left:-11.1em;
+	background-size: cover;
+	color:white;
+	font-size:13px;
+	
+}
+#lblplease
+{
+	aling:left;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:-12em; 
+	margin-left:-11.1em;
+	background-size: cover;
+	color:white;
+	font-size:13px;
+	
+}
+#lblpass
+{
+	aling:left;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:-4.2em; 
+	margin-left:-11.7em;
+	background-size: cover;
+	color:white;
+	font-size:12px;
+	
+}
+#lblfirstname
+{
+	aling:left;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:.4em; 
+	margin-left:-11.7em;
+	background-size: cover;
+	color:white;
+	font-size:12px;
+	
+}
+#txtfirstname
+{
+	border-radius: .2em;
+	background-color: white;
+    display:block; 
+    width:9em; 
+    height:2em;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin-top:1.3em; 
+    margin-left:-9.25em;
+	background-size: cover;
+}
+#lbllastname
+{
+	aling:left;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:.4em; 
+	margin-left:1em;
+	background-size: cover;
+	color:white;
+	font-size:12px;
+	
+}
+#txtlastname
+{
+	border-radius: .2em;
+	background-color: white;
+    display:block; 
+    width:9em; 
+    height:2em;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin-top:1.3em; 
+    margin-left:.40em;
+	background-size: cover;
+}
+#lblprivacity
+{
+	aling:left;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:9.1em; 
+	margin-left:-11.7em;
+	background-size: cover;
+	color:white;
+	font-size:12px;
+}
+#btnsignup
+{
+	border-radius: .2em;
+	background-color: none;
+    display:block; 
+    width:7.5em; 
+    height:1em;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin-top:10em; 
+    margin-left:-3.9em;
+	background-size: cover;
+	background-color:#0aafa6;
+	border:.15em solid #17a2b3;
+	text-align:center;
+	color:white;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	text-decoration:none; 
+}
+/*Agrega tu CSS a continuación!*/
+
