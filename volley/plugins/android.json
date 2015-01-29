@@ -1,0 +1,38 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        }
+                    ],
+                    "plugins": [
+                        {
+                            "xml": "<feature name=\"Xmpp\"><param name=\"android-package\" value=\"com.hi.plugin.Xmpp\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.android.volley"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.android.volley"
+        },
+        "com.hi.plugin.Xmpp": {
+            "PACKAGE_NAME": "com.android.volley"
+        }
+    },
+    "dependent_plugins": {}
+}
