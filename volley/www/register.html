@@ -28,24 +28,22 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+        <div id="main">
+        <div class="phone_number">
+        <label>Phone Number</label>
+        <input type="text" id="phone" name="phone"/>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script>
-            document.addEventListener("deviceready", onDeviceReady, false);
-            function onDeviceReady() {
-                //navigator.splashscreen.show();
-                setTimeout(function() {
-                    //navigator.splashscreen.hide();
-                    window.location = './register.html';
-                }, 2000);
+        
+        <div class="fullname">
+        <label>Fullname</label>
+        <input type="text" id="fullname" name="fullname"/>
+        </div>
+        
+        <input type="submit" value="register" id="register" />
+        </div>      
 
-            }
-        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/register.js"></script>
     </body>
 </html>
