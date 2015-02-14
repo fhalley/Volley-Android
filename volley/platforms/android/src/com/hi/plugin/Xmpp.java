@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.android.volley.Codes;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -31,15 +33,16 @@ public class Xmpp extends CordovaPlugin {
 	public static final String ACTION_VERIFY = "xmpp_verify";
 	public static final String ACTION_GET_PROFILE = "xmpp_get_profile";
 	public static final String ACTION_GET_ROSTER = "xmpp_get_roster";
-	public final String VERIFY_CODE = "15367";
-	public static final String CONS_PASSWORD = "asdf";
+	public String VERIFY_CODE = "15367";
+	public String CONS_PASSWORD = "12345";
 	public static final ConnectionConfiguration connConfig = new ConnectionConfiguration(
 			SERVER_HOST, SERVER_PORT, SERVICE);
 	public static final XMPPConnection connection = new XMPPConnection(
 			connConfig);
 	private Context context;
 	
-	
+	public String CODE_USER;
+	public String STATUS;
 	
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) {
@@ -55,26 +58,60 @@ public class Xmpp extends CordovaPlugin {
     			public void run() {
     				Log.i("XmppPlugin.Info","Open Thread");
     				// TODO Auto-generated method stub
-    				
     				if(ACTION_INIT.equals(action)){
     					Log.i("XmppPlugin.Info","Open Init");
-    					String hi="ASD";
+    					String hi="ASD init";
 						callbackContext.success(hi);
     				}
     				
     				else if(ACTION_REGISTER.equals(action)){
     					try {
+    						getPassAndCode();
 							register(args.getString(0), args.getString(1), CONS_PASSWORD);
 							Boolean setProfile = XmppProfile.SetHiProfile(args.getString(0), args.getString(1),CONS_PASSWORD,"1", context);
 							Log.i("XmppPlugin.Info","Registered");
+							String hi="ASD_register";
+							callbackContext.success("Registrado");
+							
     					} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							Log.i("XmppPlugin.Error",e.getMessage());
 						}
     				}
-    				
+    				else if(ACTION_VERIFY.equals(action)){
+    					try {
+    						Log.i("XmppPlugin.Info","Send code");
+							CODE_USER = args.getString(0);
+							String status = validateCode();
+						
+							callbackContext.success(status);
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+    					
+    				}
+    			}
+    			//Method to get random pass and code
+    			//Pass and code = 12345 to test
+    			private void getPassAndCode(){
+    			    //Codes CP = new Codes();
+    			    //CONS_PASSWORD =  CP.generatePassword();
+    			    //VERIFY_CODE = CP.generateCode();
+    			    CONS_PASSWORD =  "123";
+    			    VERIFY_CODE = "123";
     			}
     			
+    			//Compare Random code with user code
+    			private String validateCode(){
+    		    	String status = "Invalid code";
+    		    	
+    		    	if(VERIFY_CODE.equals(CODE_USER))
+    		    	   status = "User verificated";
+    		      		    	
+    		    	return status; 	
+    		     }
+    		 
     			//all function underneath are here
     			private boolean register(String fullname,String username, String password) {
     				try {
