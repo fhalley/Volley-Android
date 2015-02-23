@@ -32,7 +32,6 @@ function init() {
             //window.location.replace("verification.html");
         }
     };
-    
 }
 
 document.addEventListener("deviceready", init, false);
