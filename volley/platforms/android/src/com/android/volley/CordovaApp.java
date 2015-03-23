@@ -23,7 +23,7 @@ import android.os.Bundle;
 import org.apache.cordova.*;
 
 public class CordovaApp extends CordovaActivity
-{
+{ 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {

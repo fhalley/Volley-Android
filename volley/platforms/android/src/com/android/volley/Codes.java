@@ -4,7 +4,11 @@ public class Codes {
 	
     public String char_pass = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$";
     public String char_code = "0123456789";
-    //Generate random pass 12 characteres
+   // public String contrasena ="";
+   // public String code ="";
+    //public String password;
+    //public String verification_code;
+
     public String generatePassword(){
         int LargoContrasena= 12;
         int longitud = char_pass.length();
@@ -16,7 +20,7 @@ public class Codes {
            }
         return pass;
     }
-   //Generate random verification code 6 numbers
+
    public String generateCode(){
        int LargoCode= 6;
        int longitud = char_code.length();
