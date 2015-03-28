@@ -7,10 +7,19 @@ import java.util.Map;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PluginResult;
 import org.jivesoftware.smack.AccountManager;
+import org.jivesoftware.smack.Chat;
+import org.jivesoftware.smack.ChatManager;
 import org.jivesoftware.smack.ConnectionConfiguration;
+import org.jivesoftware.smack.MessageListener;
+import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.filter.MessageTypeFilter;
+import org.jivesoftware.smack.filter.PacketFilter;
+import org.jivesoftware.smack.packet.Message;
+import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,9 +28,13 @@ import org.json.JSONObject;
 import com.android.database.DatabaseManager;
 import com.android.database.db_volley;
 import com.android.volley.Codes;
+import com.android.volley.Friend;
 
+import android.R.array;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Canvas.VertexMode;
+import android.os.Handler;
 import android.util.Log;
 
 /**
@@ -38,6 +51,7 @@ public class Xmpp extends CordovaPlugin {
 	public static final String ACTION_ADD_CONTACT = "xmpp_add_contact";
 	public static final String ACTION_VERIFY = "xmpp_verify";
 	public static final String ACTION_GET_PROFILE = "xmpp_get_profile";
+	public static final String ACTION_GET_FRIENDS = "xmpp_get_friends";
 	public static final String ACTION_GET_ROSTER = "xmpp_get_roster";
 	public static final String ACTION_USER_EXISTS = "xmpp_user_exists";
 	public static final String ACTION_LOGIN = "xmpp_login";
@@ -47,13 +61,19 @@ public class Xmpp extends CordovaPlugin {
 	public String CONS_PASSWORD = null;
 	public static final ConnectionConfiguration connConfig = new ConnectionConfiguration(
 			SERVER_HOST, SERVER_PORT, SERVICE);
-	public static final XMPPConnection connection = new XMPPConnection(
+//	public static final XMPPConnection connection = new XMPPConnection(
+	//		connConfig);
+	public static XMPPConnection connection = new XMPPConnection(
 			connConfig);
 	private Context context;
 	
+	public String MESSAGE;
 	public String CODE_USER;
 	public String STATUS;
+	public List<String> listFriends = new ArrayList<String>();
 	public List<String> listProfile = new ArrayList<String>();
+	private ArrayList<String> messages = new ArrayList<String>();
+	private Handler mHandler = new Handler();
 	
 
     @Override
@@ -62,7 +82,8 @@ public class Xmpp extends CordovaPlugin {
     	Log.i("XmppPlugin.Info","Open Excute");
     	if(ACTION_INIT.equals(action)||ACTION_REGISTER.equals(action)
     			||ACTION_ADD_CONTACT.equals(action)||ACTION_SEND_MSG.equals(action)
-    			||ACTION_GET_PROFILE.equals(action)||ACTION_VERIFY.equals(action)||ACTION_GET_ROSTER.equals(action))
+    			||ACTION_GET_PROFILE.equals(action)||ACTION_VERIFY.equals(action)||ACTION_GET_ROSTER.equals(action)
+    			||ACTION_GET_FRIENDS.equals(action))
     	{
         	//Thread t = new Thread(new Runnable() {
     		final db_volley Users_DBServices = new db_volley(context);
@@ -77,8 +98,9 @@ public class Xmpp extends CordovaPlugin {
     					 String EXISTS = Users_DBServices.validacion_registacion();
     					 Log.i("XmppPlugin.Info","exists?");
     					 if(EXISTS.equals("true")){	  
+    						  getProfile();
     						  Login(PHONE, CONS_PASSWORD);
-    						  callbackContext.success(EXISTS + "logged");   
+    						  callbackContext.success(EXISTS);   
     				     }else if(EXISTS.equals("false")){
     						   callbackContext.success(EXISTS);   
     				     }else{
@@ -111,7 +133,6 @@ public class Xmpp extends CordovaPlugin {
 							if(status == "User verificated"){
 								registerBD();
 							}
-
 							callbackContext.success(status);
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
@@ -123,16 +144,94 @@ public class Xmpp extends CordovaPlugin {
 						Log.i("XmppPlugin.Info","Get and send profile info.");
 					
 						getProfile();
-						callbackContext.success(listProfile.get(2)); 
+
+						callbackContext.success(FULL_NAME); 
 		            }
+    				
+    				else if(ACTION_GET_FRIENDS.equals(action)){
+						Log.i("XmppPlugin.Info","Get and friends info.");
+						
+						getFriends();
+						//listFriends.add("Amigo 1");
+						Log.i("XmppPlugin.Info","Obtuvo los amigos");
+						
+						
+						JSONObject jsonObject = new JSONObject();
+						ArrayList<Friend> frienddetails = Users_DBServices.getFriendList();
+					
+						if(frienddetails!= null && frienddetails.size() > 0){
+							  JSONArray array = new JSONArray();
+							  for(Friend f : frienddetails ){
+								  JSONObject json = new JSONObject();
+								  
+							//	  json.put(Number, ""+Frienddetails.Name() );
+									//json.put(USER_ID, ""+"Frienddetails.id()");
+									//json.put(USERNAME, ""+Frienddetails.Name());
+									//array.put(json);								
+    		                  }	    
+						}
+						
+						
+							//OLD CODE		
+						//for(String i : listFriends){
+						//	Log.i("XmppPlugin.Info","conteo de amigos");
+						//callbackContext.success(i); 
+						//	PluginResult result = new PluginResult(PluginResult.Status.OK, i);
+							// PluginResult result = new PluginResult(PluginResult.Status.ERROR, "YOUR_ERROR_MESSAGE");
+							//result.setKeepCallback(true);
+						//	callbackContext.sendPluginResult(result);
+				    	//}						
+						//callbackContext.success(listFriends.get(0)); 
+		            }    				
+    				else if(ACTION_SEND_MSG.equals(action)){
+    					Log.i("XmppPlugin.Info","Action send message");
+    					try {
+							MESSAGE  = args.getString(0);
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+    					SendMessages();
+    				    callbackContext.success(MESSAGE); 
+    				}
     			}
+    			
+    			private void SendMessages(){
+    				String to = "edvard_cs";
+    		        String text = "Hola guei";          
+    		        Log.i("XMPPChatDemoActivity ", "Sending text " + text + " to " + to);
+    		        Message msg = new Message(to, Message.Type.chat);  
+    		        msg.setBody(text);
+    		        if (connection != null) {
+    		          connection.sendPacket(msg);
+    		          messages.add(connection.getUser() + ":");
+    		          messages.add(text);
+    		        }
+    			}
+    			//mHandler.post(new Runnable() {
+				//	public void run() {
+				//  	setListAdapter();
+				//	}
+				//});
     			
     			//Get the profile info and put it on a list
     			private void getProfile(){
-    			    db_volley Users_DBServices = new db_volley(context); 
+    			 
     				listProfile = Users_DBServices.getProfile();
+    				PHONE = listProfile.get(0);
+					CONS_PASSWORD = listProfile.get(1);
+					FULL_NAME = listProfile.get(2);
+					VERIFY_CODE = listProfile.get(3);
     			}
     			
+    			private void getFriends(){
+    				 Log.i("XMPPChatDemoActivity ", "Entro al getfriends");
+    				listFriends = Users_DBServices.getFriends();
+    				//listFriends.add("Amigo 1");
+    				//listFriends.add("Amigo 2");
+    				//listFriends.add("Amigo 3");
+    				Log.i("XMPPChatDemoActivity ", "agrego al getfriends");
+    			}
     			//Method to get random pass and code
     			//Pass and code = 12345 to test
     			private void getPassAndCode(){
@@ -157,6 +256,7 @@ public class Xmpp extends CordovaPlugin {
     			    	Log.i("XmppPlugin.Info","Open veryfi");
     					// db_volley Users_DBServices = new db_volley(context);
     					 String exists = Users_DBServices.validacion_registacion();
+    					 
     					   
     			          if(exists.equals("true")){	  
     				          listProfile = Users_DBServices.getProfile();
@@ -212,7 +312,8 @@ public class Xmpp extends CordovaPlugin {
     							   Log.i("XMPPClient", "Trono ");
     						}
     			    }
-    			 
+
+    				    
     			//all function underneath are here
     			private boolean register(String fullname,String username, String password) {
     				try {
@@ -241,9 +342,44 @@ public class Xmpp extends CordovaPlugin {
     				return true;
     	}
     	
+    	setConnection(connection);
         return false;
     }
     
-    
-   
+    public void setConnection (XMPPConnection connection) {
+
+         this.connection = connection;
+         if (connection != null) {
+            // Add a packet listener to get messages sent to us
+            PacketFilter filter = new MessageTypeFilter(Message.Type.chat);
+            connection.addPacketListener(new PacketListener() {
+               public void processPacket(Packet packet) {
+               Message message = (Message) packet;
+               if (message.getBody() != null) {
+                  // String fromName = StringUtils.parseBareAddress(message.getFrom());
+                  //ivone cambie para que al remitente le aparesca solo el nombre 
+                  String fromName = ("12344321");
+                  Log.i("XMPPClient", "Got text [" + message.getBody() + "] from [" + fromName + "]");
+                  messages.add(fromName + ":");
+                  messages.add(message.getBody());
+                  // Add the incoming message to the list view
+                  mHandler.post(new Runnable() {
+                    public void run() {
+                       // setListAdapter();
+                    }
+                });
+            }
+        }
+    }, filter);
+}
+}
+
+
+//private void setListAdapter () {
+//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+       // R.layout.multiples_mensajes,
+       // messages);
+//mList.setAdapter(adapter);
+//}
+ 
 }

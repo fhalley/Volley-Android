@@ -25,21 +25,26 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="less/style.css" />
         <title>Hello World</title>
     </head>
     <body>
         <div id="main">
         <div class="phone_number">
-        <label>Phone Number</label>
-        <input type="text" id="phone" name="phone"/>
+        <label>Email</label>
+        <input type="text" id="phone" name="email"/>
         </div>
         
         <div class="fullname">
-        <label>Fullname</label>
-        <input type="text" id="fullname" name="fullname"/>
-        </div>
+        <label>Password</label>
+        <input type="text" id="pass1" name="password"/>
+
+        <div class="fullname">
+        <label>Confirm pass</label>
+        <input type="text" id="pass2" name="confirm"/>
         
-        <input type="submit" value="register" id="register" />
+        </div>
+            <input type="submit" value="register" id="register" />
         </div>      
 
         <script type="text/javascript" src="cordova.js"></script>

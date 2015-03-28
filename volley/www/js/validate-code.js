@@ -25,6 +25,10 @@ var callbackFunction = function(err, result) {
         console.log("Ok for verification.");
         console.log("success," + result);
         alert(result);
-        //window.location.replace("verification.html");
+
+        if(result == "User verificated"){
+            window.location.replace("profile.html");
+        }
+        //window.location.replace("profile.html");
     }
  };

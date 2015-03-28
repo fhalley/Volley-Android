@@ -7,13 +7,15 @@
 html {
     height: 100%;
 }
-#ajustes tr
+.update
 {
-	text-aling:center;
-	font-size:100%;
+	text-align:left;
+	font:normal 12px "proxima_nova_sb",Arial, sans-serif, Helvetica;
+	color:white;
+	border:1px solid black;
+	text-transform: lowercase;
 	
 }
-
 body {
 	margin:0;
 	padding:0;
@@ -194,6 +196,7 @@ a {
     color:#fff;
     text-align: center;
     text-transform: uppercase;
+    display:inline-block;
 }
 
 /* SPLASH SCREEN : E */
@@ -328,6 +331,36 @@ a.buttonDone {
     text-align: center;
     
 }
+.logoindex
+{
+	border-radius: .5em;
+	background-color: none;
+    display:block; 
+    width:7em; 
+    height:7em;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin-top:center; 
+    margin-left:;
+	background-size: cover;
+}
+.userName1 {
+    position: absolute;
+    z-index: 10;
+    bottom:0px;
+    top:48%;
+    left:10%;
+    width:80%;
+   
+}
+.userName1 h4{
+    font:normal 13px "proxima_nova_eb",Arial, sans-serif, Helvetica;
+    color:#fff;
+    text-align: center;
+    margin:0;
+    padding:0;
+}
 .userName {
     position: absolute;
     z-index: 10;
@@ -397,7 +430,47 @@ background-image: radial-gradient(100% 100%, rgba(55,55,55,0.03) 30%, #000000 10
     z-index: 10;
     top:20px;
     left:10%;
-    width:50px;
+    width:auto;
+    height:auto;
+}
+.smallLogo1 {
+    position: absolute;
+    z-index: 10;
+    top:28%;
+    left:40%;
+    width:60px;
+    height:auto;
+}
+#socialindex
+{
+	aling:center;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:2.5em; 
+	margin-left:-5.4em;
+	background-size: cover;
+	color:white;
+	
+}
+#managementindex
+{
+	aling:center;
+	font-aling:left;
+	margin:-1.5% 0;
+	position:absolute;
+	top:50%; 
+	left:50%;
+	margin-top:3.5em; 
+	margin-left:-4.7em;
+	background-size: cover;
+	color:white;
+}
+.smallLogo1 img 
+{
+    width: 60px;
     height: auto;
 }
 .smallLogo img {
@@ -511,7 +584,6 @@ background-image: radial-gradient(100% 100%, rgba(55,55,55,0.03) 30%, #000000 10
 .listDetailUser {    
     padding:0px 0 0 10px;
     position: relative;
-    display:inline-block;
     overflow: hidden;
     width: 78%;
 }
@@ -548,22 +620,18 @@ background-image: radial-gradient(100% 100%, rgba(55,55,55,0.03) 30%, #000000 10
     font:normal 13px/20px "proxima_nova_rg",Arial, sans-serif, Helvetica;
     
 }
-.btnsend
-{
-	width:20%;
-}
 .listDetailUser3 {
     padding:25px 10px 10px 10px;
-    position: static;  
+    position: relative;
     min-height: 40px;
     overflow: hidden;
     width: 100%;
     text-align: right;
 }
 .listDetailUser3 span {
-    /*border-right: solid 3px #33B78D !important;*/
+    border-right: solid 3px #33B78D !important;
+    display: inline-block;
     padding:0 10px 0 0px;
-    display: -webkit-box;
     text-align: right;
     color:#848484 ;
     font:normal 13px/20px "proxima_nova_rg",Arial, sans-serif, Helvetica;
@@ -577,12 +645,11 @@ background-image: radial-gradient(100% 100%, rgba(55,55,55,0.03) 30%, #000000 10
     width:92%;
 }
 .listDetailUser3 span.inputText input {
-    /*border:solid 1px #ccc;*/
+    border:solid 1px #ccc;
     border-right: solid 3px #33B78D !important;
-    width:70% !important;
+    width:100% !important;
     padding:10px 10px;
-    display: block;
-    /*margin:0 10px 0 0;*/
+    margin:0 10px 0 0;
     color: #848484;
 }
 a.userNameDetail {
@@ -665,7 +732,7 @@ p.newMessageCount {
     top:-10px;
 }
 .listUserChat {    
-    padding:18px 0;
+    padding:13px 0;
     border-bottom: solid 1px #F3F3F3 ;
         tap-highlight-color: rgba(0,0,0,0.5);
     -webkit-tap-highlight-color: rgba(0,0,0,0.5);
@@ -717,7 +784,7 @@ h6.latestChat {
 }
 .searchBox {
     position: fixed;
-    bottom: 15px;
+    bottom: 10px;
     height: 10%;
     width: 92% !important;
     padding:0 0 10px 0;
