@@ -41,7 +41,7 @@ import android.util.Log;
  * This class echoes a string called from JavaScript.
  */
 public class Xmpp extends CordovaPlugin {
-
+	
 	public static final String SERVER_HOST = "66.208.118.221";
 	public static final int SERVER_PORT = 5222;
 	public static final String SERVICE = "volley.com ";
@@ -52,6 +52,7 @@ public class Xmpp extends CordovaPlugin {
 	public static final String ACTION_VERIFY = "xmpp_verify";
 	public static final String ACTION_GET_PROFILE = "xmpp_get_profile";
 	public static final String ACTION_GET_FRIENDS = "xmpp_get_friends";
+	public static final String ACTION_ADD_FRIEND = "xmpp_add_friend";
 	public static final String ACTION_GET_ROSTER = "xmpp_get_roster";
 	public static final String ACTION_USER_EXISTS = "xmpp_user_exists";
 	public static final String ACTION_LOGIN = "xmpp_login";
@@ -74,6 +75,8 @@ public class Xmpp extends CordovaPlugin {
 	public List<String> listProfile = new ArrayList<String>();
 	private ArrayList<String> messages = new ArrayList<String>();
 	private Handler mHandler = new Handler();
+	ArrayList<Friend> amiguitos = new ArrayList<Friend>();
+	
 	
 
     @Override
@@ -83,7 +86,7 @@ public class Xmpp extends CordovaPlugin {
     	if(ACTION_INIT.equals(action)||ACTION_REGISTER.equals(action)
     			||ACTION_ADD_CONTACT.equals(action)||ACTION_SEND_MSG.equals(action)
     			||ACTION_GET_PROFILE.equals(action)||ACTION_VERIFY.equals(action)||ACTION_GET_ROSTER.equals(action)
-    			||ACTION_GET_FRIENDS.equals(action))
+    			||ACTION_GET_FRIENDS.equals(action)||ACTION_ADD_FRIEND.equals(action))
     	{
         	//Thread t = new Thread(new Runnable() {
     		final db_volley Users_DBServices = new db_volley(context);
@@ -150,12 +153,36 @@ public class Xmpp extends CordovaPlugin {
     				
     				else if(ACTION_GET_FRIENDS.equals(action)){
 						Log.i("XmppPlugin.Info","Get and friends info.");
-						
+
 						getFriends();
 						//listFriends.add("Amigo 1");
 						Log.i("XmppPlugin.Info","Obtuvo los amigos");
 						
 						
+						   for (Friend i: amiguitos) {
+							   Log.i("XmppPlugin.Info", "Amigos: " + i.getFull_Name() + " Numero:" + i.getNumber() ); 
+						     //   System.out.println (i); //Muestra cada uno de los nombres dentro de listaDeNombres
+						    }
+					
+					    JSONObject jsonObject = new JSONObject();
+							
+					    JSONArray array = new JSONArray();
+								  for(Friend f : amiguitos ){
+									  JSONObject json = new JSONObject();
+									  
+		    							try {
+											json.put("name", f.getFull_Name());
+											json.put("num", f.getNumber());
+											array.put(json);
+										} catch (JSONException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+
+	    		          }
+						  callbackContext.success(array); 
+						   /* 
+						// trying implement hallis code
 						JSONObject jsonObject = new JSONObject();
 						ArrayList<Friend> frienddetails = Users_DBServices.getFriendList();
 					
@@ -164,17 +191,19 @@ public class Xmpp extends CordovaPlugin {
 							  for(Friend f : frienddetails ){
 								  JSONObject json = new JSONObject();
 								  
-							//	  json.put(Number, ""+Frienddetails.Name() );
+	    							//json.put(Phone, Friend.);
+							        //json.put(Number, ""+Frienddetails.Name() );
 									//json.put(USER_ID, ""+"Frienddetails.id()");
 									//json.put(USERNAME, ""+Frienddetails.Name());
 									//array.put(json);								
     		                  }	    
 						}
+						 
+						callbackContext.success(jsonObject); 
 						
-						
-							//OLD CODE		
+						//OLD CODE		
 						//for(String i : listFriends){
-						//	Log.i("XmppPlugin.Info","conteo de amigos");
+						//log.i("XmppPlugin.Info","conteo de amigos");
 						//callbackContext.success(i); 
 						//	PluginResult result = new PluginResult(PluginResult.Status.OK, i);
 							// PluginResult result = new PluginResult(PluginResult.Status.ERROR, "YOUR_ERROR_MESSAGE");
@@ -182,6 +211,9 @@ public class Xmpp extends CordovaPlugin {
 						//	callbackContext.sendPluginResult(result);
 				    	//}						
 						//callbackContext.success(listFriends.get(0)); 
+						 * 
+						 * */
+						 
 		            }    				
     				else if(ACTION_SEND_MSG.equals(action)){
     					Log.i("XmppPlugin.Info","Action send message");
@@ -194,6 +226,23 @@ public class Xmpp extends CordovaPlugin {
     					SendMessages();
     				    callbackContext.success(MESSAGE); 
     				}
+    				
+    				else if(ACTION_ADD_FRIEND.equals(action)){
+						Log.i("XmppPlugin.Info","Vamosaver si agrega.");
+						String num = "";
+						try {
+							num = args.getString(0);
+							Users_DBServices.friend_username = num;
+							Users_DBServices.sqlThread.start();
+							
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						String nameFriend = Users_DBServices.consultFriend(num);
+
+						callbackContext.success(nameFriend); 
+		            }
     			}
     			
     			private void SendMessages(){
@@ -225,8 +274,10 @@ public class Xmpp extends CordovaPlugin {
     			}
     			
     			private void getFriends(){
-    				 Log.i("XMPPChatDemoActivity ", "Entro al getfriends");
-    				listFriends = Users_DBServices.getFriends();
+    				Log.i("XMPPChatDemoActivity ", "Entro al getfriends");
+    				 amiguitos = Users_DBServices.getFriendsTest();
+    			  // esta es la buena   amiguitos = Users_DBServices.getAmigos();
+    				//listFriends = Users_DBServices.getFriends();
     				//listFriends.add("Amigo 1");
     				//listFriends.add("Amigo 2");
     				//listFriends.add("Amigo 3");

@@ -1,10 +1,17 @@
 package com.android.database;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.android.volley.Friend;
 import com.android.volley.Profile;
+//import com.squareup.okhttp.Connection;
+
+
 
 import android.R.fraction;
 import android.R.string;
@@ -141,7 +148,58 @@ public class db_volley {
 
 		return friendList;
 	}
+	public ArrayList<Friend> getFriendsTest(){
+		friend_insert_manual();
+		//List<String> pro = new ArrayList<String>();
+		ArrayList<Friend> arrayListFriends = new ArrayList<Friend>();
+		open();
+		Cursor c = db.rawQuery("Select * from dt_friends;", null) ;
+		//Cursor c = db.rawQuery("Select username,friend_username,message,date_register,hour from dt_chatMessenger;", null) ;
+	    if(c.moveToFirst())
+	    {
+	    	do
+	    	{
+	    		Friend friendObj = new Friend();
+	    		
+	    		friendObj.setNumber(c.getString(1));
+	    		friendObj.setFull_Name(c.getString(2));
+	    		
+	    		arrayListFriends.add(friendObj);
+	    	}
+	    	while
+	    	(c.moveToNext());
+	    }
+	    close();
+		return arrayListFriends;
+	}
+	
+	public ArrayList<Friend> getAmigos(){
+		Friend friendObj1 = new Friend();
+		Friend friendObj2 = new Friend();
+		Friend friendObj3 = new Friend();
+		Friend friendObj4 = new Friend();
+		
+		ArrayList<Friend> arrayListFriends = new ArrayList<Friend>();
+		
+		friendObj1.setNumber("1311087061");
+		friendObj1.setFull_Name("Angel");
 
+		friendObj2.setNumber("2311087061");
+		friendObj2.setFull_Name("Pedro");
+		
+		friendObj3.setNumber("3311087061");
+		friendObj3.setFull_Name("Daniel");
+		
+		friendObj4.setNumber("4311087061");
+		friendObj4.setFull_Name("Juan");
+		
+		arrayListFriends.add(friendObj1);
+		arrayListFriends.add(friendObj2);
+		arrayListFriends.add(friendObj3);
+		arrayListFriends.add(friendObj4);
+	
+		return arrayListFriends;
+	}
 
 	public String validacion_registacion()
 	{
@@ -179,18 +237,27 @@ public class db_volley {
 	    }
 	    close();
 	}
-	
 
 	
-	public void friend_insert(String friend_username)
+	public void friend_insert(String friend_username, String name)
 	{
 		consulta_usuario();
 		open();
 		ContentValues registro = new ContentValues();
 		registro.put("friend_username", friend_username.toString());
-		registro.put("username", _usuario.toString());
-		db.insert("dt_friend_list", null, registro);
+		registro.put("name", name.toString());
+		db.insert("dt_friends", null, registro);
 		close();
+	}
+	
+	public void friend_insert_manual()
+	{
+		friend_insert("123", "amigo 1");
+		friend_insert("223", "amigo 2");
+		friend_insert("3123", "amigo 3");
+		friend_insert("4123", "amigo 4");
+		friend_insert("5123", "amigo 5");
+
 	}
 	
     public void consulta_usuario()
@@ -210,6 +277,101 @@ public class db_volley {
 		}
 		close();
 	}
+
+	public String consultFriend(String number){
+
+		String name ="";
+		//number = "alexis";
+		open();
+		Cursor fila = db.rawQuery("select name from dt_friends where friend_username like '"+
+		  number.toString()+ "'", null);
+		
+		if (fila.moveToFirst()) {
+			  
+			name = fila.getString(0);
+		}
+		else
+		{
+			name = "error";
+		}
+		close();
+		return name;
+	}
+	
+  //PostgresSQL database-----------------------------------------------------------------------------------------------
+
+  	public String friend_username;
+  	public String friend_name;
+  	
+  	
+  	public Thread sqlThread = new Thread() {
+  		
+  		
+  		 public void run() {
+  		 try {
+  			 
+  		 Class.forName("org.postgresql.Driver");
+  		 // "jdbc:postgresql://IP:PUERTO/DB", "USER", "PASSWORD");
+  		 // Si estás utilizando el emulador de android y tenes el PostgreSQL en tu misma PC no utilizar 127.0.0.1 o localhost como IP, utilizar 10.0.2.2
+  		 Connection conn = DriverManager.getConnection(
+  		 "jdbc:postgresql://66.208.118.222:5432/volley_db", "omar", "123456");
+  		 //En el stsql se puede agregar cualquier consulta SQL deseada.
+  		 String stsql = "Select username,name from ofuser where username like '"+friend_username.toString()+"'";
+  		 Statement st = conn.createStatement();
+  		 
+  		 ResultSet rs = st.executeQuery(stsql);
+  		 
+  		
+  			 if(rs.next())
+  			 {
+  				 System.out.println(rs.getString(1));
+  				friend_username =   rs.getString(1);
+  				friend_name = rs.getString(2);
+  				System.out.println(friend_username + friend_name);
+  				 
+  				 
+  				
+  			    friend_insert(friend_username,friend_name);
+  				 
+  				System.out.println( rs.getString(1) );
+  			    conn.close();
+  		   }
+  		
+  		 	sqlThread.interrupt();
+  		 //rs.next();
+
+  		 }
+  		 catch (SQLException se) {
+  		 System.out.println("oops! No se puede conectar. Error: " + se.toString());
+  		 friend_name = "No existe 1";
+  		
+  		 
+  		 }
+  		 catch (ClassNotFoundException e) {
+  		 System.out.println("oops! No se encuentra la clase. Error: " + e.getMessage());
+  		 friend_name = "No existe 2";
+  		 
+  		 } catch (java.sql.SQLException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  			friend_name = "No existe 3";
+  		}
+  		 
+  		 
+  	   }
+  	
+  	
+  		
+  	};
+  	
+  	
+
+    
+    
+    
+    
+    
+    
 
  
 

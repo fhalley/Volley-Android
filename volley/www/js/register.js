@@ -1,4 +1,4 @@
-alert("eeeeeeeeeee");
+
 function init() {
     console.log('Ready To Works');
     function register() {
@@ -25,7 +25,6 @@ function init() {
         } else {
             console.log("Ok for Reg");
             console.log("success," + result);
-            alert('your phone number success to registered ' + result);
             window.location.replace("enter-code.html");
         }
     };

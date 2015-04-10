@@ -1,5 +1,5 @@
 alert("entro al js frie3nda");
-var friendList= [];
+//var friendList;
 function init() {
     callNativePlugin(callbackFunction);
 }
@@ -17,14 +17,19 @@ function callNativePlugin(callback) {
 ;
 
 var callbackFunction = function(err, result) {
-  console.log("Waiting ToCallback");
-  alert("Entro al callbackFunctionoooo");
+
   if (err) {
     console.log("entro al if.");
-    alert("Entrtro al iff");
+
   } else {
     console.log("entro al else. lista amigos");
-   // alert(result);
-    friendList = result;
+
+    for (i in result) { 
+      alert("Amigo "+[i]+":"+result[i].name + ". Numero:" + result[i].num);
+
+
+    }//for end
+
   }
+
 };
