@@ -1,5 +1,6 @@
 alert("entro al js frie3nda");
 //var friendList;
+
 function init() {
     callNativePlugin(callbackFunction);
 }
@@ -26,7 +27,6 @@ var callbackFunction = function(err, result) {
 
     for (i in result) { 
       alert("Amigo "+[i]+":"+result[i].name + ". Numero:" + result[i].num);
-
 
     }//for end
 

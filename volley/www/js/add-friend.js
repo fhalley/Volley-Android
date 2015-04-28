@@ -1,5 +1,5 @@
 function addFriend() {
-    alert("ejecutando addfriends");
+    //alert("ejecutando addfriends");
     callNativePlugin(callbackFunction);
     console.log("Final");
     //alert("Pico el bagre");
@@ -9,7 +9,7 @@ el.addEventListener("click", addFriend, false);
 
 function callNativePlugin(callback) {
         var code = $("#phone").val();
-        alert("entro al calnative");
+        //alert("entro al calnative");
        // var code  = "alexis";
         cordova.exec(function(result) {
             callback(null, result);
@@ -28,7 +28,7 @@ var callbackFunction = function(err, result) {
     } else {
        // console.log("Ok for verification.");
        // console.log("success," + result);
-       // alert("se agrego "+result+ " a la lista de amigos.");
+        alert("se agrego "+result+ " a la lista de amigos.");
         window.location.replace("addcontact.html");
 
         //if(result == "User verificated"){

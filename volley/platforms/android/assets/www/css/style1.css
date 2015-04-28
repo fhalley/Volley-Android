@@ -1,0 +1,804 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* general : s 
+============================================= */
+
+html {
+    height: 100%;
+}
+#ajustes tr
+{
+	text-aling:center;
+	font-size:100%;
+	
+}
+
+.hide {
+   display: none;
+
+}
+
+
+body {
+	margin:0;
+	padding:0;
+    height: 100%; 
+    min-height: 100%;
+    position: relative; 
+    overflow: hidden;
+    width:100%;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+.clearit {
+    clear:both;
+}
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+::selection {
+	background: #f1140a;
+	color: #fff;
+	text-shadow: none;
+}
+
+
+::-moz-selection {
+  background: #f1140a ;
+  color: #fff;
+  text-shadow: none;
+}
+
+.mt10 {
+    margin-top:10px;
+}
+.mr10 {
+    margin-right:10px;
+}
+.mb10 {
+    margin-bottom:10px;
+}
+.ml10 {
+    margin-left:10px;
+}
+.mt15 {
+    margin-top:15px;
+}
+.mr15 {
+    margin-right:15px;
+}
+.mb15 {
+    margin-bottom:15px;
+}
+.ml15 {
+    margin-left:15px;
+}
+.mt20 {
+    margin-top:20px;
+}
+.mr20 {
+    margin-right:20px;
+}
+.mb20 {
+    margin-bottom:20px;
+}
+.ml20 {
+    margin-left:20px;
+}
+.mt30 {
+    margin-top:30px;
+}
+.mr30 {
+    margin-right:30px;
+}
+.mb30 {
+    margin-bottom:30px;
+}
+.ml30 {
+    margin-left:30px;
+}
+.mt40 {
+    margin-top:40px;
+}
+.mr40 {
+    margin-right:40px;
+}
+.mb40 {
+    margin-bottom:40px;
+}
+.ml40 {
+    margin-left:40px;
+}
+
+a {
+  -o-transition:color .2s ease-out, background .2s ease-in;
+  -ms-transition:color .2s ease-out, background .2s ease-in;
+  -moz-transition:color .2s ease-out, background .2s ease-in;
+  -webkit-transition:color .2s ease-out, background .2s ease-in;
+  /* ...and now for the proper property */
+  transition:color .2s ease-out, background .2s ease-in;
+/*
+    tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+  -ms-tap-highlight-color: transparent;
+*/
+}
+
+/* general : e 
+============================================= */
+
+/* specific : s 
+============================================= */
+.wrapper {
+    width:100%;
+    overflow: hidden;
+    margin:0 auto;
+}
+
+/* specific : e 
+============================================= */
+
+/* SPALSH SCREEN : S */
+.splashScreen {
+    background: url(../images/stardust_@2X.png) repeat;
+    width: 100%;
+    height: 100%; 
+    min-height: 100%; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    bottom: 0;
+    overflow: hidden;
+}
+.splashScreenBottom {
+    min-width: 320px;
+    height: auto; 
+    bottom: 0;
+    position: absolute;
+}
+.splashScreenBottom img {
+    min-width:320px;
+    max-width: 400px;
+    
+}
+.bigLogo {
+    width:160px;
+    margin:0 auto;
+    position: relative;
+    top:20%;
+    text-align: center;
+}
+.bigLogo img{
+    width:100px;
+    height: auto;
+    margin:0 auto;
+    padding:0;
+}
+.bigLogo h1 {
+    font:normal 12px/18px "proxima_nova_sb",Arial, sans-serif, Helvetica;
+    margin:5px 0 0 0;
+    padding:0;
+    color:#fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* SPLASH SCREEN : E */
+
+/* INTRO : S */
+.intro {
+    /* Rectangle 6: */
+    width: 100%;
+    height: 100%; 
+    min-height: 100%; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    bottom: 0;
+    overflow: hidden;
+    /* Rectangle 1: */
+background:#33B78D ;
+}
+.intro h1 {
+    width:80%;
+    font:normal 22px/28px "proxima_nova_eb",Arial, sans-serif, Helvetica;
+    margin:15% auto 0 auto;
+    padding:0;
+    color:#fff;
+    text-align: left;
+    text-transform: uppercase;
+}
+.intro h1.fixPhoneNumber {
+    width:80%;
+    font:normal 24px/28px "proxima_nova_eb",Arial, sans-serif, Helvetica;
+    margin:15% auto 0 auto;
+    padding:0;
+    color:#fff;
+    text-align: center !important;
+    text-transform: uppercase;
+}
+.intro h2 {
+    width:80%;
+    font:normal 18px/24px "proxima_nova_eb",Arial, sans-serif, Helvetica;
+    margin:15% auto 0 auto;
+    padding:0;
+    color:#fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+.introDropdown {
+    width:80%;
+    margin:60px auto 0 auto;
+    border-bottom:solid 1px #fff;
+}
+.introDropdown select {
+    width:100%;
+    font:normal 20px/28px "proxima_nova_b",Arial, sans-serif, Helvetica;
+    margin:60px auto 0 auto;
+    padding:0;
+    color:#fff;
+    text-align: left;
+    height: 40px;
+    border:none;
+    border-radius: none;
+    background: none;
+    display: block;
+    -webkit-appearance: none;  /*Removes default chrome and safari style*/
+    -moz-appearance: none; /* Removes Default Firefox style*/
+    appearance:none;
+    outline: none;
+}
+.introDropdown input.countryCode {
+    width:20%;
+    font:normal 20px/28px "proxima_nova_b",Arial, sans-serif, Helvetica;
+    color:#fff;
+    border: none;
+    background: none;
+    float: left;
+    outline: none;
+    padding:7px 0;
+}
+.introDropdown input.phoneNumber {
+    width:60%;
+    font:normal 20px/28px "proxima_nova_b",Arial, sans-serif, Helvetica;
+    padding:7px 0;
+    color:#fff;
+    border: none;
+    background: none;
+    float: left;
+    outline: none;
+    text-transform: uppercase;
+}
+.introDropdown input.enterCode {
+    width:100% !important;
+    font:normal 20px/28px "proxima_nova_b",Arial, sans-serif, Helvetica;
+    padding:7px 0;
+    margin:0 auto;
+    color:#fff;
+    border: none;
+    background: none;
+    outline: none;
+    text-transform: uppercase;
+    text-align: center !important;
+}
+a.buttonDone {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    padding:10px 0;
+    text-align: center;
+    text-decoration: none;
+    background-color:#34323E ;
+    width:100%;
+    font:normal 20px/28px "proxima_nova_b",Arial, sans-serif, Helvetica;
+    color:#fff;
+    text-transform: uppercase;
+}
+.intro h6 {
+    width:80%;
+    font:normal 11px "proxima_nova_sb",Arial, sans-serif, Helvetica;
+    margin:10px auto 0 auto;
+    padding:0;
+    color:#fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+/* INTRO : E */
+
+/* PROFILE : S */
+.photoProfile {
+    width:100%;
+    height: 100%;
+    background: #000 ;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+    
+}
+.userName {
+    position: absolute;
+    z-index: 10;
+    bottom:0px;
+    left:10%;
+    width:80%;
+}
+.userName h1{
+    font:normal 30px/36px "proxima_nova_eb",Arial, sans-serif, Helvetica;
+    color:#fff;
+    text-align: left;
+    text-transform: uppercase;
+    margin:0;
+    padding:0;
+}
+.userName p {
+    font:normal 12px/18px "proxima_nova_rg",Arial, sans-serif, Helvetica;
+    color:#fff;
+    text-align: left;
+    margin:10px 0 0 0;
+    padding:0;
+}
+
+.photoProfile .mask {
+    /* Bitmap: */
+    /* Bitmap: */
+background-image: -o-radial-gradient(100% 100%, rgba(55,55,55,0.03) 30%, #000000 100%);
+background-image: -moz-radial-gradient(100% 100%, rgba(55,55,55,0.03) 30%, #000000 100%);
+background-image: -ms-radial-gradient(100% 100%, rgba(55,55,55,0.03) 30%, #000000 100%);
+background-image: radial-gradient(100% 100%, rgba(55,55,55,0.03) 30%, #000000 100%);
+    width:100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9;
+    
+}
+.photoProfile img {
+    width:auto;
+    height: 100%;
+}
+.actionPP {
+    width:100%;
+    height: 50px;
+    padding-top:25px;
+    margin:25px auto 0 auto;
+    border-top: solid 1px #b5b5b5;
+    position: relative;
+}
+.actionPP div {
+    width:18px;
+    height: auto;
+    margin:0 50px 0 0;
+    padding:0 0px 0 0;
+    opacity: 0.7;
+}
+.actionPP div a img {
+    width:100%;
+    height: auto;
+}
+.actionPP div a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.smallLogo {
+    position: absolute;
+    z-index: 10;
+    top:20px;
+    left:10%;
+    width:50px;
+    height: auto;
+}
+.smallLogo img {
+    width: 50px;
+    height: auto;
+}
+.notification {
+    text-align: center;
+    font:normal 11px "proxima_nova_b",Arial, sans-serif, Helvetica;
+    color:#fff;
+    background: #f36364 ;
+    width:12px !important;
+    height: 12px !important;
+    border-radius: 12px;
+    position: absolute;
+    padding:4px !important;
+    display: inline-block;
+    top:13px;
+    left:10px;
+    opacity: 1 !important;
+}
+/* PROFILE : E */
+
+/* CHAT : S */
+.topNav {
+    width:100%;
+    height: 60px;
+    background: #34323E;
+    position:fixed !important;
+   
+    z-index: 10;
+    top:0;
+    overflow: hidden;
+}
+.topNav a {
+    display: block;
+    width:30px;
+    height: 30px;
+    padding:18px 15px 15px 15px;
+/*    background: #2D2B35 ;*/
+    position: absolute;
+}
+.topNav a.bMenu {
+    left: 0;
+    z-index: 11;
+}
+.topNav a.bSearch {
+    right: 0;
+    z-index: 11;
+}
+.topNav a.bAddChat {
+    right: 0;
+    z-index: 11;
+}
+.topNav a.bAttach{
+    right: 0;
+    z-index: 11;
+}
+.topNav a img {
+    width: 100%;
+    height: auto;
+}
+
+.contentChat {
+    background: #fff;
+    width: 100%;
+    height: 90%;
+/*    padding:60px 0 0 0;*/
+    position: absolute;
+    z-index: 9;
+    overflow: hidden;
+    overflow-y: scroll;
+    
+}
+.contentChatIn {
+    width: 92%;
+    height: auto;
+    margin:70px 4% 0px 4%;
+}
+.sUserPhoto {
+    position: relative;
+}
+.sUserPhoto a {
+    display: inline-block;
+    width:40px;
+    height: 40px;
+    border-radius: 40px;
+    background: #ddd;
+    overflow: hidden;
+}
+.sUserPhoto a img {
+    width:40px;
+    height: 40px;
+}
+.sUserPhoto2 {
+    position: relative;
+    margin-top:10px;
+}
+.sUserPhoto2 a {
+    display: inline-block;
+    width:30px;
+    height: 30px;
+    border-radius: 30px;
+    background: #ddd;
+    overflow: hidden;
+}
+.sUserPhoto2 a img {
+    width:30px;
+    height: 30px;
+}
+.listDetailUser {    
+    padding:0px 0 0 10px;
+    position: relative;
+    display:inline-block;
+    overflow: hidden;
+    width: 78%;
+}
+
+.listDetailUser1 {    
+    padding:0px 0 0 10px;
+    position: relative;
+    min-height: 40px;
+    overflow: hidden;
+    width: 78%;
+}
+.listDetailUser1 span {
+    border-left: solid 3px #33B78D ;
+    display: inline-block;
+    padding:0 0 0 10px;
+    color:#848484 ;
+    font:normal 13px/20px "proxima_nova_rg",Arial, sans-serif, Helvetica;
+    
+}
+.listDetailUser2 {
+    padding:0px 10px 0 0px;
+    position: relative;
+    min-height: 40px;
+    overflow: hidden;
+    width: 78%;
+    text-align: right;
+}
+.listDetailUser2 span {
+    border-right: solid 3px #33B78D !important;
+    display: inline-block;
+    padding:0 10px 0 0px;
+    text-align: right;
+    color:#848484 ;
+    font:normal 13px/20px "proxima_nova_rg",Arial, sans-serif, Helvetica;
+    
+}
+.btnsend
+{
+	width:20%;
+}
+.listDetailUser3 {
+    padding:25px 10px 10px 10px;
+    position: static;  
+    min-height: 40px;
+    overflow: hidden;
+    width: 100%;
+    text-align: right;
+}
+.listDetailUser3 span {
+    /*border-right: solid 3px #33B78D !important;*/
+    padding:0 10px 0 0px;
+    display: -webkit-box;
+    text-align: right;
+    color:#848484 ;
+    font:normal 13px/20px "proxima_nova_rg",Arial, sans-serif, Helvetica;
+    
+}
+.listDetailUser1 span.typing {
+    color:#33B78D !important ;
+}
+.listDetailUser3 span.inputText {    
+    margin:0 10px 0 0px !important;
+    width:92%;
+}
+.listDetailUser3 span.inputText input {
+    /*border:solid 1px #ccc;*/
+    border-right: solid 3px #33B78D !important;
+    width:70% !important;
+    padding:10px 10px;
+    display: block;
+    /*margin:0 10px 0 0;*/
+    color: #848484;
+}
+a.userNameDetail {
+    text-decoration: none;
+    font:normal 14px "proxima_nova_sb",Arial, sans-serif, Helvetica;
+    color:#4e4c58   ;
+    display: block;
+     tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+  -ms-tap-highlight-color: transparent;
+/*
+    -webkit-user-select:none;
+    -ms-touch-action: none;
+*/
+}
+a.userNameDetail:visited {
+    background-color: #fff;
+}
+a.userNameDetail:focus {
+    background-color: #fff;
+}
+a.userNameDetail p {    
+    font:normal 16px/18px "proxima_nova_sb",Arial, sans-serif, Helvetica !important;
+    color:#2D2B35 !important;
+    margin:0;
+    padding:0;
+    max-height: 38px;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 5px;
+     tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+  -ms-tap-highlight-color: transparent;
+}
+a.userNameDetail span {    
+    font:normal 12px/18px "proxima_nova_rg",Arial, sans-serif, Helvetica !important;
+    color:#CCCCCC !important;
+    overflow: hidden !important;
+    max-height: 38px !important;
+    display: block;
+     tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+  -ms-tap-highlight-color: transparent;
+}
+i.newMessage {
+    background: #33B78D ;
+    width:8px;
+    height: 8px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-right: 5px;
+}
+i.pendingMessage {
+    background: #EECB23  ;
+    width:8px;
+    height: 8px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-right: 5px;
+}
+i.sendMessage {
+    background: #979797  ;
+    width:8px;
+    height: 8px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-right: 5px;
+}
+p.newMessageCount {
+    font:normal 10px "proxima_nova_b",Arial, sans-serif, Helvetica !important;
+    color:#fff;
+    background:#33B78D;
+    display: inline-block;
+    position: absolute;
+    z-index: 10;
+    border-radius: 16px;
+    border:solid 1px #fff;
+    padding:3px;
+    left: -5px;
+    top:-10px;
+}
+.listUserChat {    
+    padding:18px 0;
+    border-bottom: solid 1px #F3F3F3 ;
+        tap-highlight-color: rgba(0,0,0,0.5);
+    -webkit-tap-highlight-color: rgba(0,0,0,0.5);
+  -ms-tap-highlight-color: rgba(0,0,0,0.5);
+}
+.listUserChat2 {
+    padding:5px 0;
+}
+.sideBar {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    position: relative;
+    z-index: 11;
+}
+.topNav h1 {
+    font:normal 16px "proxima_nova_b",Arial, sans-serif, Helvetica !important;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    padding:10px 0 0 0;
+    z-index: 10;
+}
+.coverPhoto {
+    position: absolute;
+    z-index: 9;
+    height: 60px;
+    width: 100%;
+}
+.coverPhoto img {
+    width:100%;
+    height: auto;
+    top:-50%;
+    position: absolute;
+    opacity: 0.3;
+}
+.contentChatBg {
+/*    background: url(../images/stardust_@2X.png) repeat;*/
+    
+}
+h6.latestChat {
+    margin:0;
+    padding:0;
+    text-align: center;
+    font:normal 12px "proxima_nova_s",Arial, sans-serif, Helvetica !important;
+    color: #ccc;
+}
+.searchBox {
+    position: fixed;
+    bottom: 15px;
+    height: 10%;
+    width: 92% !important;
+    padding:0 0 10px 0;
+    border-bottom: none !important;
+}
+input.textSearch {
+     font:normal 14px "proxima_nova_sb",Arial, sans-serif, Helvetica !important;
+    color: #000;
+}
+.detailNo {
+    width:80%;
+}
+.bInvite {
+    width:20%;
+}
+.bInvite a {
+    text-decoration: none;
+    font:normal 10px "proxima_nova_sb",Arial, sans-serif, Helvetica !important;
+    color: #fff;
+    text-transform: uppercase;
+    padding:7px 10px;
+    display: inline-block;
+    background: #33B78D;
+    border-radius: 3px;
+    margin-top: 5px;
+
+}
+/* CHAT : E */
+
+/* MENU : S */
+ul.sideMenu {
+    margin: 0;
+    padding:20px 0 0 30px;
+}
+ul.sideMenu li {
+    list-style-type: none;
+}
+ul.sideMenu li a {
+    text-decoration: none;
+    font:normal 16px "proxima_nova_rg",Arial, sans-serif, Helvetica !important;
+    color: #fff;
+    padding:15px 10px;
+    display: block;
+/*    text-transform: uppercase;*/
+    border-bottom: solid 1px #303030;
+    
+}
+.sideMenu li a img {
+    width:20px;
+    height: auto;
+    padding:0px 20px 0 0;
+}
+.smallProfile {
+    padding:30px 0 20px 0;
+    width:100%;
+    text-align: center;
+    background: #212126 ;
+}
+.smallProfile img {
+    width:100px;
+    height: 100px;
+    border-radius: 100px;
+}
+.smallProfile a {
+    text-decoration: none;
+    font:normal 18px "proxima_nova_rg",Arial, sans-serif, Helvetica !important;
+    color: #fff;
+    margin:20px 0;
+    display: block;
+}
+#sidr-left {
+    background: #2B2B30 !important;
+}
+/* MENU : E */
+
+
+
+

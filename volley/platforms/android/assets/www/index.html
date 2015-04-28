@@ -21,21 +21,50 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link type="text/css" rel="stylesheet" href="less/style.css"></link>
+    <link type="text/css" rel="stylesheet" href="less/font.css"></link>
+    <script src="js/jquery-1.10.2.min.js"></script>
         <title>Hello World</title>
     </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+    <body class="home-screen">
+        <div class="container-home">
+            <!-- logo & title : s -->
+            <div class="logo">
+                <img src="images/logo.png">
+                <img style="margin-top:10px;" src="images/logotext.png">
             </div>
+            <h6>Social Networking Content Management System</h6>
+            <!-- logo & title : s -->
+
+            <!-- carousel : s -->
+            <div class="carousel-home">
+                <div class="carousel-list">
+                    <span>Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta.</span>
+                </div>
+                <div class="carousel-indicator">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <!-- carousel : e -->
+
+            <!-- button : s -->
+            <!-- button : e -->
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <!--  <script>
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady() {
+                //navigator.splashscreen.show();
+                setTimeout(function() {
+                    //navigator.splashscreen.hide();
+                    window.location = './account-setup2.html';
+                }, 2000);
+            }
+        </script>-->
+          <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/auto-login.js"></script>
+        
     </body>
 </html>

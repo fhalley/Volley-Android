@@ -12,9 +12,7 @@ public class Friend {
     public String getFull_Name() {
 	    return Full_Name;
 	}
-    
-    
-    
+
     
     public void setNumber(String _number) {
 	    Number = _number;

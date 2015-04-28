@@ -68,13 +68,13 @@
     			" <div id='Clock'>" + time + "</div></div>");
     	  		startTime();
     	  		message_frend="";          
-      }
-     else
-     {
+    }
+    else
+    {
     	
-     }
-	  //change photos
-	  $(function () {
+    }
+    //change photos
+	$(function () {
 		    $(":file").change(function () {
 		        if (this.files && this.files[0]) {
 		            var reader = new FileReader();

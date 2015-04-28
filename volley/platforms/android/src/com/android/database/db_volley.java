@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.volley.Friend;
+import com.android.volley.MessageObj;
 import com.android.volley.Profile;
 //import com.squareup.okhttp.Connection;
+
+
 
 
 
@@ -20,6 +23,7 @@ import android.database.SQLException;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.os.StrictMode;
 
 public class db_volley {
 	
@@ -27,7 +31,7 @@ public class db_volley {
 	private VolleyOpenHelper dbHelper;
 	
 	public String _usuario,_pass,_val;
-	public int cant;
+	public int cant,cant2;
 	
 	public ArrayList<String> list_friends = new ArrayList<String>();
 
@@ -149,7 +153,7 @@ public class db_volley {
 		return friendList;
 	}
 	public ArrayList<Friend> getFriendsTest(){
-		friend_insert_manual();
+		//friend_insert_manual();
 		//List<String> pro = new ArrayList<String>();
 		ArrayList<Friend> arrayListFriends = new ArrayList<Friend>();
 		open();
@@ -298,6 +302,104 @@ public class db_volley {
 		return name;
 	}
 	
+	
+	
+	//Chat messages ................................................................................
+	    public int _id_chat = 0;
+	
+	
+		public void chat_add(String user, String friend)
+		{
+			
+			open();
+			ContentValues registro = new ContentValues();
+			registro.put("user", user.toString());
+		    registro.put("friend",friend.toString());
+		    db.insert("dt_Chats", null, registro);
+		    close();
+			
+		}
+		public void chat_delete(Integer id_chat)
+		{
+			
+			open();
+			cant = db.delete("dt_Chats", "id_chat ='"+id_chat +"'", null);
+			cant2 = db.delete("dt_Messages","id_chat ='" +id_chat+"'", null);
+			close();
+			
+			
+		}
+			public void consult_chat(String friend){
+			
+			open();
+			Cursor fila = db.rawQuery("select id_chat from dt_Chats where friend like '"+friend+"' ;", null);
+			
+			
+			if(fila.moveToFirst()) 
+			{ 
+				 _id_chat = fila.getInt(0);
+			}
+			else
+			{
+				_id_chat = 0;
+				
+			}
+			close();
+		}
+			
+		public void message_add(Integer id_chat,String user ,String message, String date_register, String hour)
+		{
+			
+			open();
+			ContentValues registro = new ContentValues();
+			registro.put("id_chat", id_chat.intValue());
+			registro.put("user", user.toString());
+		    registro.put("message",message.toString());
+		    registro.put("date_register", date_register.toString());
+		    registro.put("hour", hour.toString());
+		    db.insert("dt_Messages", null, registro);
+		    close();
+		}
+		
+		
+		
+		
+		
+		public ArrayList<MessageObj> get_messages(Integer id_chat)
+		{   
+			
+			ArrayList<MessageObj> listMessages = new ArrayList<MessageObj>();
+			open();
+			Cursor c = db.rawQuery("Select user,message,date_register,hour from dt_Messages where id_chat ='" + id_chat + "' ;", null) ;
+			//Cursor c = db.rawQuery("Select user,message,date_register,hour from dt_Messages;", null) ;
+			if(c.moveToFirst())
+		    {
+		    	do
+		    	{
+		    		
+		    		String get1 = c.getString(0);
+		    		String get2 = c.getString(1);
+		    		String get3 = c.getString(2);
+		    		String get4 = c.getString(3);
+		    		
+		    		MessageObj msg = new MessageObj(id_chat,get1,get2,get3,get4);
+		    		listMessages.add(msg);
+		    	    
+		    	}
+		    	while
+		    	(c.moveToNext());
+		    	
+		    }
+		    close();
+		    
+		    return listMessages;
+			  
+		}
+	
+	
+	
+	
+	
   //PostgresSQL database-----------------------------------------------------------------------------------------------
 
   	public String friend_username;
@@ -364,6 +466,63 @@ public class db_volley {
   		
   	};
   	
+  	
+  	
+  	public void friend_verification() {
+ 		 try {
+ 			 
+ 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			 StrictMode.setThreadPolicy(policy);
+ 			 
+ 		 Class.forName("org.postgresql.Driver");
+ 		 // "jdbc:postgresql://IP:PUERTO/DB", "USER", "PASSWORD");
+ 		 // Si estás utilizando el emulador de android y tenes el PostgreSQL en tu misma PC no utilizar 127.0.0.1 o localhost como IP, utilizar 10.0.2.2
+ 		 Connection conn = DriverManager.getConnection(
+ 		 "jdbc:postgresql://66.208.118.222:5432/volley_db", "omar", "123456");
+ 		 //En el stsql se puede agregar cualquier consulta SQL deseada.
+ 		 String stsql = "Select username,name from ofuser where username like '"+friend_username.toString()+"'";
+ 		 Statement st = conn.createStatement();
+ 		 
+ 		 ResultSet rs = st.executeQuery(stsql);
+ 		 
+ 		
+ 			 if(rs.next())
+ 			 {
+ 				 System.out.println(rs.getString(1));
+ 				friend_username =   rs.getString(1);
+ 				friend_name = rs.getString(2);
+ 				System.out.println(friend_username + friend_name);
+ 				 
+ 				 
+ 				
+ 			    friend_insert(friend_username,friend_name);
+ 				 
+ 				System.out.println( rs.getString(1) );
+ 			    conn.close();
+ 		   }
+ 		
+ 		 	sqlThread.interrupt();
+ 		 //rs.next();
+
+ 		 }
+ 		 catch (SQLException se) {
+ 		 System.out.println("oops! No se puede conectar. Error: " + se.toString());
+ 		 friend_name = "No existe 1";
+ 		
+ 		 
+ 		 }
+ 		 catch (ClassNotFoundException e) {
+ 		 System.out.println("oops! No se encuentra la clase. Error: " + e.getMessage());
+ 		 friend_name = "No existe 2";
+ 		 
+ 		 } catch (java.sql.SQLException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 			friend_name = "No existe 3";
+ 		}
+ 		 
+ 		 
+ 	   }
   	
 
     
