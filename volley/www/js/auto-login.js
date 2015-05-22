@@ -25,7 +25,8 @@ document.addEventListener("deviceready", init, false);
           if (result == "true"){
             window.location.replace("profile.html");
           }else{
-            window.location.replace("account-setup2.html");
+            //window.location.replace("account-setup2.html");
+            window.location.replace("login-register.html");
           }
         }
     };

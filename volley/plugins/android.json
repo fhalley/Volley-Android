@@ -11,11 +11,35 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BackgroundServicePlugin\"><param name=\"android-package\" value=\"com.red_folder.phonegap.plugin.backgroundservice.BackgroundServicePlugin\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "plugins": [
                         {
                             "xml": "<feature name=\"Xmpp\"><param name=\"android-package\" value=\"com.hi.plugin.Xmpp\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<receiver android:name=\"com.red_folder.phonegap.plugin.backgroundservice.BootReceiver\"><intent-filter><action android:name=\"android.intent.action.BOOT_COMPLETED\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:name=\"com.red_folder.phonegap.plugin.backgroundservice.sample.MyService\"><intent-filter><action android:name=\"com.red_folder.phonegap.plugin.backgroundservice.sample.MyService\" /></intent-filter></service>",
                             "count": 1
                         }
                     ]
@@ -32,7 +56,14 @@
         },
         "com.hi.plugin.Xmpp": {
             "PACKAGE_NAME": "com.android.volley"
+        },
+        "com.red_folder.phonegap.plugin.backgroundservice.sample": {
+            "PACKAGE_NAME": "com.android.volley"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "com.red_folder.phonegap.plugin.backgroundservice": {
+            "PACKAGE_NAME": "com.android.volley"
+        }
+    }
 }

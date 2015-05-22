@@ -200,7 +200,7 @@ a{
 }
 .container-home {
   background: url("../images/background.png") center top no-repeat;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   position: relative; }
   .container-home h6 {

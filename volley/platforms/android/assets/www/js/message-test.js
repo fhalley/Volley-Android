@@ -2,9 +2,9 @@ var number_friend = "";
 var message = "";
 //var hour = "";
 //var date = "";
-
+alert("entro al message-test");
 function clickSend() {
-    number_friend = $("#a").val();
+    number_friend = $("#a").val() + "volley.com";
     message = $('#message').val();
     alert("el mensaje se enviara "+ message +" a: " + number_friend);
     callNativePlugin(callbackFunction);
@@ -30,7 +30,7 @@ var callbackFunction = function(err, result) {
     else{
         alert(result);
     }
- };
+};
 
 function mostrarhora(){ 
     var f = new Date();

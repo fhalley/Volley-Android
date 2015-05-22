@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- meta for mobile screen : s -->
+        <meta name="viewport" content="width=device-width">
+        <meta name="msapplication-tap-highlight" content="no"/> 
+        <!-- meta for mobile screen : e -->
+        <title>HI</title>
+         <link href="css/style1.css" rel="stylesheet" type="text/css" />
+        <link href="css/fonts.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="js/sidr-package-1.2.1/stylesheets/jquery.sidr.dark.css">
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <!-- Include the Sidr JS -->
+        <script src="js/sidr-package-1.2.1/jquery.sidr.min.js"></script>
+        <script src="js/script1.js"></script>
+    </head>
+    
+    <body>
+        <!-- wrapper : s -->
+        <div class="wrapper">
+            <!-- Chat list : s -->
+            <div class="chatList">
+                
+               
+                <!-- sidebar : e -->
+                <!-- top nav : s -->
+                <div class="topNav clearfix">
+                    <!-- coverPhoto : S -->
+<!--
+                    <div class="coverPhoto">
+                            <img src="images/pp.png">
+                        </div>
+-->
+                    <!-- coverPhoto : e -->
+<!--                    <a id="left-menu" href="index.html" class="left bMenu">-->
+<!--                        <a id="left-menu" class="left bMenu tiny button secondary radius" href="#sidr" draggable="true"></a>-->
+                    <a id="left-menu" href="#left-menu" class="left bMenu" draggable="fals">
+                        <img src="images/bMenu.png">
+                    </a>
+                    <h1 class="left">Friends</h1>
+                    <a id="right-menu" href="addcontact.html" class="right bAttach " draggable="fals">
+                        <img src="images/attach.png">
+                    </a>
+                    <a href="js/friends:jsFunction();"></a>
+<!--
+                    <a href="#" class="right bSearch ">
+                        <img src="images/search.png">
+                    </a>
+-->
+                </div>
+                <!-- content chat : s -->
+                
+                <div id="content" class="contentChat contentChatBg">
+                    <div id="friendlist" class="contentChatIn">
+                        <!-- date time : s -->
+                        <p id="name" class="hide"></p>
+                	    <p id="number" class="hide"></p>
+                        <!-- date time : e -->
+                        <!-- list user : s -->
+                    </div>
+                </div>
+                
+                <!-- search : s -->
+                <div class="listUserChat clearfix searchBox">
+                    <div class="listDetailUser3">
+                        <span class="inputText">
+                            <div class="btnsend" href="#">O</div> <input id="textchat" type="text" value=""></input> 
+                            <div id="" class="btnsend">Find</div>   
+                        </span>
+                    </div>
+                </div>
+                <!-- search : e -->
+                <!-- content chat : e -->
+                <!-- top nav : e -->
+            </div>
+            <!-- Chat list : e -->
+        </div>
+        <!-- wrapper : e -->
+    </body>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/friends.js"></script>
+       <!-- <script type="text/javascript" src="js/get-userfriend.js"></script>-->
+  <script>
+  		$(document).ready(function() {
+            $('#left-menu').sidr({
+            	 name: 'sidr-left',
+              side: 'left' // By default
+            });
+        });
+  </script>
+
+</html>

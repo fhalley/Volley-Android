@@ -19,7 +19,7 @@ public class VolleyOpenHelper extends SQLiteOpenHelper{
 		
 		
 
-		db.execSQL("create table dt_Chats (id_chat integer autonumeric, user text, friend text)");
+		db.execSQL("create table dt_Chats (id_chat integer autonumeric, friend text)");
 		db.execSQL("create table dt_Messages(id_chat integer, user text, message text, date_register text, hour text)");
 	
 	
@@ -38,7 +38,7 @@ public class VolleyOpenHelper extends SQLiteOpenHelper{
 		
 
 
-		db.execSQL("create table dt_Chats (id_chat integer autonumeric, user text, friend text)");
+		db.execSQL("create table dt_Chats (id_chat integer autonumeric, friend text)");
 		db.execSQL("create table dt_Messages(id_chat integer, user text, message text, date_register text, hour text)");
 		
 		

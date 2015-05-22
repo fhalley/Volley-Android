@@ -8,5 +8,7 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
+<!--     <content src="myService.html" /> 
+    <content src="myService.html" />-->
     <access origin="*" />
 </widget>

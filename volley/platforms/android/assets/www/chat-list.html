@@ -22,8 +22,6 @@
         <div class="wrapper">
             <!-- Chat list : s -->
             <div class="chatList">
-                
-               
                 <!-- sidebar : e -->
                 <!-- top nav : s -->
                 <div class="topNav clearfix">
@@ -35,12 +33,12 @@
 -->
                     <!-- coverPhoto : e -->
 <!--                    <a id="left-menu" href="index.html" class="left bMenu">-->
-<!--                        <a id="left-menu" class="left bMenu tiny button secondary radius" href="#sidr" draggable="true"></a>-->
+<!--                        <a id="left-menu" class="left bMenu tiny button secondary radius" href="#sidr"draggable="true"></a>-->
                     <a id="left-menu" href="#left-menu" class="left bMenu" draggable="fals">
                         <img src="images/bMenu.png">
                     </a>
-                    <h1 class="left">Friends</h1>
-                    <a id="right-menu" href="addcontact.html" class="right bAttach " draggable="fals">
+                    <h1 class="left">Conversations</h1>
+                    <a id="right-menu" href="friend-list.html" class="right bAttach " draggable="fals">
                         <img src="images/attach.png">
                     </a>
                     <a href="js/friends:jsFunction();"></a>
@@ -55,24 +53,18 @@
                 <div id="content" class="contentChat contentChatBg">
                     <div id="friendlist" class="contentChatIn">
                         <!-- date time : s -->
-                      <p id="name" class="hide"></p>
-                	  <p id="number" class="hide"></p>
+                        <p id="name" class="hide"></p>
+                	    <p id="number" class="hide"></p>
                         <!-- date time : e -->
                         <!-- list user : s -->
                     </div>
-                  </div>
+                </div>
                 
                 <!-- search : s -->
                 <div class="listUserChat clearfix searchBox">
                     
                     <div class="listDetailUser3">
-                   
-                      <span class="inputText">
-                            <div class="btnsend" href="#" >O</div> <input id="textchat" type="text" value=""></input> 
-                            <div id="" class="btnsend">Find</div>
-                            
-                        </span>
-
+                
                     </div>
                 </div>
                 <!-- search : e -->
@@ -84,14 +76,14 @@
         <!-- wrapper : e -->
     </body>
     <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/friends.js"></script>
-  <script>
+    <script type="text/javascript" src="js/get-chats.js"></script>
+    <script type="text/javascript" src="js/get-userfriend.js"></script>
+    <script>
   		$(document).ready(function() {
             $('#left-menu').sidr({
-            	 name: 'sidr-left',
-              side: 'left' // By default
+            	name: 'sidr-left',
+                side: 'left' // By default
             });
         });
-  </script>
-
+    </script>
 </html>

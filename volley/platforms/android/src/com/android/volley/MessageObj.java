@@ -5,7 +5,7 @@ public class MessageObj {
 	
 	private Integer id_chat;
 	private String user;
-	private String friend;
+	//private String friend;
 	private String message;
 	private String date_register;
 	private String hour; 
