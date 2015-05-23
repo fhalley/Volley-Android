@@ -29,7 +29,7 @@ var callbackFunction = function(err, result) {
     console.log("entro al else. lista amigos");
 
     for (i in result) { 
-      //alert("Amigo "+[i]+":"+result[i].name + ". Numero:" + result[i].num);
+      alert("Amigo "+[i]+":"+result[i].name + ". Numero:" + result[i].num);
       //name1.innerHTML += result[i].name + "<br/>"; //le da valor a cada <p>
       //number.innerHTML += result[i].num + "<br/>"; //le da valor a cada <p>
       //alert("Amigo "+[i]+":"+result[i].name + ". Numero:" + result[i].num);

@@ -42,7 +42,7 @@ function updateHandler(data) {
         try {
             var resultMessage = document.getElementById("resultMessage");
             //var pesan = JSON.parse(data.LatestResult.Message);
-            console.log("You Got A New Message details : " + data.LatestResult.Message);
+            //console.log("You Got A New Message details : " + data.LatestResult.Message);
             //resultMessage.innerHTML = "You Got A New Message details : " + data.LatestResult.Message ;
             //crearDiv(data.LatestResult.sender, data.LatestResult.msg);
             //escribirMsj(data.LatestResult.msg);
@@ -85,7 +85,7 @@ function enableTimer(data) {
         registerForUpdates(data);
     } else {
         alert("mil milisegundos");
-        myService.enableTimer(60000, function (r) { 
+        myService.enableTimer(10000, function (r) { 
             registerForUpdates(r)
         }, function (e) {
             displayError(e)

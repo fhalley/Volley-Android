@@ -216,7 +216,7 @@ public class Xmpp extends CordovaPlugin {
 				        //   System.out.println (i); //Muestra cada uno de los nombres dentro de listaDeNombres
 						}
 					
-					    JSONObject jsonObject = new JSONObject();
+					    //JSONObject jsonObject = new JSONObject();
 							
 					    JSONArray array = new JSONArray();
 						for(Friend f : listFriends ){
@@ -367,8 +367,9 @@ public class Xmpp extends CordovaPlugin {
     				} else if(ACTION_GET_MESSAGES.equals(action)){
     					Log.i("XmppPlugin.Info","Get and messages info.");
     					//nt num = args.getInt(0);
-									listMessages = DBServices.getMessages();
-									Log.i("XmppPlugin.Info","Obtuvo los menssages.");
+                        listMessages.clear();				
+    					listMessages = DBServices.getMessages();
+						Log.i("XmppPlugin.Info","Obtuvo los menssages.");
 					
 					    for (MessageObj i: listMessages) {
 						   Log.i("XmppPlugin.Info", "Mensaje: " + i.getMessage() + " del usuario:" + i.getUsername()); 

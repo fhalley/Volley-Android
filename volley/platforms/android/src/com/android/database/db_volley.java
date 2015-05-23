@@ -213,6 +213,7 @@ public class db_volley {
 	
 	public ArrayList<MessageObj> getMessages(){
 		message_insert_manual();
+	
 		Log.i("XMPPChatDemoActivity", "se guardo mensaje en data base.");	
 		ArrayList<MessageObj> arrayListMessage = new ArrayList<MessageObj>();
 		open();
@@ -243,9 +244,11 @@ public class db_volley {
 		  numero.toString()+ "'", null);
 		
 		if (fila.moveToFirst()) 
-			nombre = fila.getString(0);
+			nombre = fila.getString(2);
+		//Log.i("XMPPChatDemoActivity", "se encontro: " + nombre);	
 		else
 			nombre = "No existe";
+		
 		
 		close();
 		return nombre;
